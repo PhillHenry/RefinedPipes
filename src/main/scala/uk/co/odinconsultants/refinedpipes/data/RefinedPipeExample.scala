@@ -21,6 +21,7 @@ object RefinedPipeExample {
   def main(args: Array[String]): Unit = {
     println(s"Old? ${toBinaryInt(39)}")
     println(s"pipeline: ${doModel(toBinaryInt(39))}")
+//    println(s"does not compile: ${doModel(39)}")
   }
 
 }
