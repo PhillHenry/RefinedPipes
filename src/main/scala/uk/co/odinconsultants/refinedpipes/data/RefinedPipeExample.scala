@@ -14,8 +14,13 @@ object RefinedPipeExample {
   def toBinaryInt(age: Age): BinaryInt =
     if (age < 40) 1 else 0
 
+  val One: BinaryInt = 1
+
+  def doModel(x: BinaryInt): Boolean = x == One
+
   def main(args: Array[String]): Unit = {
-    print(s"Old? ${toBinaryInt(39)}")
+    println(s"Old? ${toBinaryInt(39)}")
+    println(s"pipeline: ${doModel(toBinaryInt(39))}")
   }
 
 }
