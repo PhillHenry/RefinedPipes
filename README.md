@@ -1,0 +1,2 @@
+# RefinedPipes
+Types safe pipelining
