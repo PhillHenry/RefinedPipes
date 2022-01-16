@@ -5,7 +5,6 @@ import uk.co.odinconsultants.refinedpipes.data.ExampleDataTypes._
 
 object RefinedPipeExample {
 
-
   def toBinaryInt(age: Age): BinaryInt =
     if (age < 40) 1 else 0
 
