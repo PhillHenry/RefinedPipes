@@ -15,8 +15,10 @@ class InMemoryPipeline extends PipelineFunctions[List] {
     }
   }
 
+  val AgeThreshold = 40
+
   override def categorize(cleanPatients: List[Patient[Age]]): List[Patient[BinaryInt]] = cleanPatients.map { patient =>
-    val binary: BinaryInt = if (patient.age < 40) 1 else 0
+    val binary: BinaryInt = if (patient.age < AgeThreshold) 1 else 0
     Patient[BinaryInt](binary)
   }
 }

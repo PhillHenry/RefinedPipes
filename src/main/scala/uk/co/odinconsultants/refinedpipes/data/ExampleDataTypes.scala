@@ -5,8 +5,10 @@ import eu.timepit.refined.numeric.Interval.Closed
 
 object ExampleDataTypes {
 
-  type Age = Int Refined Closed[0, 120]
-  type BinaryInt = Int Refined Closed[0, 1]
+  type MaxAge     = 120
+  type MinAge     = 0
+  type Age        = Int Refined Closed[MinAge, MaxAge]
+  type BinaryInt  = Int Refined Closed[MinAge, 1]
 
   case class Patient[AGE](age: AGE)
 
