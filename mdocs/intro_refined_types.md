@@ -14,7 +14,7 @@ def inverse(x: Double): Double = 1d / x
 Now, let's call it:
 
 ```scala mdoc
-val x = inverse(2.0)
+inverse(2.0)
 ```
 
 Great! OK, let's be naughty:
