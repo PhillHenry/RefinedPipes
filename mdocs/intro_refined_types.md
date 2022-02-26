@@ -29,7 +29,7 @@ The function is simply not defined at `x=0`.
 **Note that this is a problem at runtime.** You simple can't do anything with an `Infinity`.
 
 To be fair, the `where` clause in the original equation did warn us.
-So, how can we express this limitation in computer code?
+So, how can we express this constraint in computer code?
 This is where refined types come in. 
 Let's write the same function this time refining the argument:
 
