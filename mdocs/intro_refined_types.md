@@ -35,21 +35,23 @@ Let's write the same function this time refining the argument:
 
 ```scala mdoc
 import eu.timepit.refined.api.Refined
+import eu.timepit.refined.auto._
+import eu.timepit.refined.boolean._
 import eu.timepit.refined.numeric._
 
-type NonZeroDouble = Validated[GreaterThanDouble[0d] And LowerThanDouble[0d]]
+type NonZeroDouble = Double Refined (Greater[0d] Or Less[0d])
 
-def inverse_refined(x: NonZeroDouble): Double = 1d / x.asInstanceOf[Double]
+def inverse_refined(x: NonZeroDouble): Double = 1 / x
 ```
 
 The happy path is as before:
 
 ```scala mdoc
-inverse_refined(2.0: NonZeroDouble)
+inverse_refined(2.0)
 ```
 
 But now, our efforts at being naughty are caught at *compile time*:
 
-```scala mdoc:crash
+```scala mdoc:fail
 inverse_refined(0.0)
 ```
