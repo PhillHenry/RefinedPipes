@@ -68,7 +68,7 @@ trait SparkDataset[T]
 
 def getPatientsFromSpark(): SparkDataset[Patient[Age]] = ???
 ```
-Then, as part of our ML pipeline, we no longer treat age not as a number but as a flag:
+Then, as part of our ML pipeline, we no longer treat `age` not as a number but as a flag:
 ```scala mdoc
 type Binary = Int Refined (GreaterEqual[0] Or LessEqual[1])
 
@@ -77,21 +77,20 @@ def ageToFlag(df: SparkDataset[Patient[Age]]): SparkDataset[Patient[Binary]] = ?
 Now, we can call our model method with confidence knowing we have not missed a step in the pipeline:
 ```scala mdoc
 def makeModel(df: SparkDataset[Patient[Binary]]) = println(f"Made the model with ${df}. Honest.")
+
+makeModel(new SparkDataset[Patient[Binary]] {})
 ```
-The compiler will stop us from calling it having not turned age to a flag:
+However, the compiler will stop us from calling it having not turned `age` to a flag:
 ```scala mdoc:fail
 val dfAgeAsNumber: SparkDataset[Patient[Age]] = ???
 
 makeModel(dfAgeAsNumber)
 ```
-Similarly, if we try to turn the age field into a flag twice as in our original problem, 
+Similarly, if we try to turn the `age` field into a flag twice as in our original problem, 
 we'll see *compile time* errors:
 ```scala mdoc:fail
 val dfAgeAsBinary: SparkDataset[Patient[Binary]] = ???
 
 ageToFlag(dfAgeAsBinary)
 ```
-But if we use the correct type, things work fine:
-```scala mdoc
-makeModel(new SparkDataset[Patient[Binary]] {})
-```
+This can save us hours of waiting for a build.
