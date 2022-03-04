@@ -23,7 +23,7 @@ Great! OK, let's be naughty:
 inverse(0.0)
 ```
 
-Well, that wasn't very clever. We've hit a [mathematical singularity](https://en.wikipedia.org/wiki/Singularity_(mathematics)).
+Well, that wasn't very clever. We've hit a [mathematical singularity](https://en.wikipedia.org/wiki/Singularity_(mathematics) ).
 The function is simply not defined at `x=0`. 
 
 **Note that this is a problem at runtime.** You simple can't do anything with an `Infinity`.

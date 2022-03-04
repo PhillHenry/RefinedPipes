@@ -78,7 +78,7 @@ Now, we can call our model method with confidence knowing we have not missed a s
 ```scala mdoc
 def makeModel(df: SparkDataset[Patient[Binary]]) = println(f"Made the model with ${df}. Honest.")
 
-makeModel(new SparkDataset[Patient[Binary]] {})
+makeModel(new SparkDataset[Patient[Binary]] { override def toString() = "a sample Dataset" })
 ```
 However, the compiler will stop us from calling it having not turned `age` to a flag:
 ```scala mdoc:fail
@@ -94,3 +94,11 @@ val dfAgeAsBinary: SparkDataset[Patient[Binary]] = ???
 ageToFlag(dfAgeAsBinary)
 ```
 This can save us hours of waiting for a build.
+
+### Conclusion
+
+With a pipeline that uses refined types:
+
+* The strong typing documents what is happening ([self-documenting code](https://en.wikipedia.org/wiki/Self-documenting_code)). 
+* This means it's easier to spot bugs.
+* If you do make a mistake, you know at compile-time rather than hours into a build.
