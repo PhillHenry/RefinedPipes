@@ -99,6 +99,6 @@ This can save us hours of waiting for a build.
 
 With a pipeline that uses refined types:
 
-* The strong typing documents what is happening ([self-documenting code](https://en.wikipedia.org/wiki/Self-documenting_code)). 
-* This means it's easier to spot bugs.
+* The strong typing documents what is happening ([self-documenting code](https://en.wikipedia.org/wiki/Self-documenting_code)). This means it's easier to spot bugs.
 * If you do make a mistake, you know at compile-time rather than hours into a build.
+* At runtime, you'll only see the first error before you jobs dies. At compile time, you'll see all errors.
